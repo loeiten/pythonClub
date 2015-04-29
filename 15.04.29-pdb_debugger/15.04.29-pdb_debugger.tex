@@ -87,7 +87,9 @@ Slides and programs:
 \section{Short intro to the stack frame}
 
 \begin{slide}[method=file]{Stack-frame}
- For future references: What is all this stack-frame fuzz?
+ What is all this stack-frame fuzz? (freely after 
+\href{www.cs.swarthmore.edu/~richardw/cs21-s12/stack-example.pdf}{
+\texttt{this reference}})
  \inputminted[fontsize=\scriptsize, linenos]{python}{programs/stack_example.py}
  \vspace*{-6cm}
    \begin{figure}[h!tb]
@@ -126,7 +128,6 @@ Slides and programs:
     \includegraphics[width=0.30\linewidth]{figures/stack7}
     }
    \end{figure}
- \vspace{-1cm}
  \onslide{9}{
  The \textbf{traceback} prints the stack trace
  }
@@ -269,37 +270,6 @@ pp expression
 
 
 
-\begin{slide}[method=file]{Often used commands 2}
-\vspace{\stretch{1}}
-\begin{minted}[fontsize=\scriptsize]{python}
-# Set next line to be executed (at the bottom most frame)
-# Jump back and execute code again or skip part of code
-# (Not always allowed)
-j(ump) lineno
-
-# List the source code around current line
-l(ist) [first[, last]]
-
-# List source for current function or frame
-ll | longlist
-
-# Print arguments of current function
-a(rgs)
-
-# Evaluate the expression, and print its value
-# Similar to print(), but print() is a python function
-p expression
-
-# The same as above, but with prettyprinted function
-pp expression
-
-# Empty line: Previous command is repeated
-#
-\end{minted}
-\vspace{\stretch{1}}
-\end{slide}
-
-
 \begin{slide}[method=file]{Demonstration}
 Play around with \texttt{programs/my\_debug\_example.py} file if you are at 
 home, not attending the presentation
@@ -411,39 +381,6 @@ q(uit)
 \section{If you debug alot}
 
 
-\begin{slide}[method=file]{Even more functions}
-\vspace{\stretch{1}}
-\begin{minted}[fontsize=\scriptsize]{python}
-# Enable bp number
-enable [bpnumber [bpnumber ...]]
-
-# Ignore bp count times (if cout>0)
-ignore bpnumber [count]
-
-# Set new condition for the bp
-condition bpnumber [condition]
-
-# Specify commands for bpnumber (or the last)
-# end ends the command
-# silent disables info about bp reached
-commands [bpnumber]
-
-# Print type of expression
-whatis expression
-
-# Try to get the source for the given object
-source expression
-
-# Stop and display the value of the expression if changed
-# Somewhat similar to watchpoints in gdb
-display [expression]
-
-# Stop displaying in current frame
-undisplay [expression]
-\end{minted}
-\vspace{\stretch{1}}
-\end{slide}
-
 
 \begin{slide}[method=file]{\texttt{.pdbrc}}
 For defeault commands when starting the pdb:\\
@@ -457,7 +394,7 @@ alias ph !help(%1)
 alias redefined p 'home definition'
 \end{minted}
 
-\verb@~/.pdbrc@ is read from the current working directory, setting 
+\verb@./.pdbrc@ is read from the current working directory, setting 
 local preferences.
 
 \begin{minted}[fontsize=\scriptsize]{python}
@@ -493,20 +430,20 @@ Num Type         Disp Enb   Where
 
 
 \begin{slide}[method=file]{Links}
-Documentation
+Documentation\\
 \href{https://docs.python.org/3.4/library/pdb.html}{
 \texttt{https://docs.python.org/3.4/library/pdb.html}}
 \vspace{1cm}
 
 
-Basic about debugging
+Basic about debugging\\
 \href{
 https://pythonconquerstheuniverse.wordpress.com/2009/09/10/debugging-in-python/}
 {\texttt{https://pythonconquerstheuniverse.wordpress.com/2009/09/10/...}}\vspace
 { 1cm}
 
 
-More indepth about debugging
+More indepth about debugging\\
 \href{http://pymotw.com/2/pdb/}{\texttt{http://pymotw.com/2/pdb/}}
 \end{slide}
 
