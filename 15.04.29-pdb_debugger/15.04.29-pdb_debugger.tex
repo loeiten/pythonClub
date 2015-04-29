@@ -44,13 +44,28 @@ Slides and programs:
 %  a(rgs)
 %  p expression
 
+% Example
 % import pdb
 % import my_debug_example_fail
 % my_debug_example_fail.main()
-%
+% ...
 % pdb.pm()
-
+% Post mortem the failed file, and change a_list to a list
+% show the help
+% (pdb)b="bbb"
+% Up, down
+%
+% Change to something that works
 % python -m pdb my_debug_example.py
+% Set new condition for the bp (demo) -> if i==3
+% b 40, i==1
+% Breakpoint in the for loop commands 1 -> (com) p i
+% commands 1
+% (com) p 'hey'
+% (com) end
+% display i
+% alias (demo) foo print('hello'))
+
 
 
 
