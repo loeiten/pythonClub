@@ -1,0 +1,11 @@
+*~
+*.pyc
+*.svn/
+*.swp
+*.bak
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.backup
