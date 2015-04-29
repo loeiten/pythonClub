@@ -9,3 +9,8 @@
 *.log
 *.out
 *.backup
+*.bm
+*.dvi
+*.ps
+*.toc
+*.vrb

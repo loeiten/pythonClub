@@ -32,6 +32,30 @@ Slides and programs:
 \begin{document}
 \maketitle
 
+%  Example 
+%  n(ext)
+%  s(tep)
+%  unt(il) [lineno]
+%  r(eturn)
+%  c(ont(inue))
+%  j(ump) lineno
+%  l(ist) [first[, last]]
+%  ll | longlist
+%  a(rgs)
+%  p expression
+
+% import pdb
+% import my_debug_example_fail
+% my_debug_example_fail.main()
+%
+% pdb.pm()
+
+% python -m pdb my_debug_example.py
+
+
+
+
+
 
 \begin{slide}{pdb}
 \vspace*{4cm}
@@ -270,17 +294,6 @@ lastline=12]{python}{programs/my_debug_example.py}
 \vspace{\stretch{1}}
 \end{slide}
 
-%  Example 
-%  n(ext)
-%  s(tep)
-%  unt(il) [lineno]
-%  r(eturn)
-%  c(ont(inue))
-%  j(ump) lineno
-%  l(ist) [first[, last]]
-%  ll | longlist
-%  a(rgs)
-%  p expression
 
 \begin{slide}[method=file]{More commands}
 \vspace{\stretch{1}}
@@ -379,6 +392,110 @@ q(uit)
 \end{minted}
 \vspace{\stretch{1}}
 \end{slide}
+
+\section{If you debug alot}
+
+
+\begin{slide}[method=file]{Even more functions}
+\vspace{\stretch{1}}
+\begin{minted}[fontsize=\scriptsize]{python}
+# Enable bp number
+enable [bpnumber [bpnumber ...]]
+
+# Ignore bp count times (if cout>0)
+ignore bpnumber [count]
+
+# Set new condition for the bp
+condition bpnumber [condition]
+
+# Specify commands for bpnumber (or the last)
+# end ends the command
+# silent disables info about bp reached
+commands [bpnumber]
+
+# Print type of expression
+whatis expression
+
+# Try to get the source for the given object
+source expression
+
+# Stop and display the value of the expression if changed
+# Somewhat similar to watchpoints in gdb
+display [expression]
+
+# Stop displaying in current frame
+undisplay [expression]
+\end{minted}
+\vspace{\stretch{1}}
+\end{slide}
+
+
+\begin{slide}[method=file]{\texttt{.pdbrc}}
+For defeault commands when starting the pdb:\\
+
+\verb@~/.pdbrc@ is read first, setting preferences for all debugging 
+sessions.
+\begin{minted}[fontsize=\footnotesize]{python}
+# Show python help
+alias ph !help(%1)
+# Overridden alias
+alias redefined p 'home definition'
+\end{minted}
+
+\verb@~/.pdbrc@ is read from the current working directory, setting 
+local preferences.
+
+\begin{minted}[fontsize=\scriptsize]{python}
+# Breakpoints
+break 10
+# Overridden alias
+alias redefined p 'local definition'
+\end{minted}
+\end{slide}
+
+
+\begin{slide}[method=file]{Running with \texttt{.pdbrc}}
+\begin{minted}[fontsize=\footnotesize]{python}
+$ python -m pdb pdb_function_arguments.py
+
+Breakpoint 1 at .../pdb_function_arguments.py:10
+> .../pdb_function_arguments.py(7)<module>()
+-> import pdb
+
+(Pdb) alias
+ph = !help(%1)
+redefined = p 'local definition'
+
+(Pdb) break
+Num Type         Disp Enb   Where
+1   breakpoint   keep yes   at .../pdb_function_arguments.py:10
+\end{minted}
+\end{slide}
+
+
+\section{More info}
+
+
+
+\begin{slide}[method=file]{Links}
+Documentation
+\href{https://docs.python.org/3.4/library/pdb.html}{
+\texttt{https://docs.python.org/3.4/library/pdb.html}}
+\vspace{1cm}
+
+
+Basic about debugging
+\href{
+https://pythonconquerstheuniverse.wordpress.com/2009/09/10/debugging-in-python/}
+{\texttt{https://pythonconquerstheuniverse.wordpress.com/2009/09/10/...}}\vspace
+{ 1cm}
+
+
+More indepth about debugging
+\href{http://pymotw.com/2/pdb/}{\texttt{http://pymotw.com/2/pdb/}}
+\end{slide}
+
+
 
 \section[template=wideslide,tocsection=hidden]{Thank you for your attention!}
 
